@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="CrapsTest" tests="1" skipped="0" failures="0" errors="0" timestamp="2019-01-18T07:39:50" hostname="celina-spectre" time="1.09">
+  <properties/>
+  <testcase name="testRoundOneIfReturnSumOf7IsTrue" classname="CrapsTest" time="1.09"/>
+  <system-out><![CDATA[]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
