@@ -38,8 +38,6 @@ public class Craps {
 
       switch (sum) {
          case 7:
-            return true;
-
          case 11:
             return true;
 
