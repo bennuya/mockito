@@ -40,7 +40,11 @@ public class Craps {
          case 7:
             return true;
 
+         case 11:
+            return true;
+
          case 2:
+         case 3:
          case 12:
             return false;
 

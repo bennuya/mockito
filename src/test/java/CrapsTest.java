@@ -12,6 +12,8 @@ public class CrapsTest {
 
     Craps testE;
 
+    /* first round */
+    // first roll win 7
     @Test
     public void testRoundOneIfReturnSumOf7IsTrue () {
 
@@ -24,5 +26,23 @@ public class CrapsTest {
         // games rules say that a game is won if you have a 7. play needs to return true then
         assertTrue(testE.play() == true);
     }
+
+    // first roll win 11
+    @Test
+    public void testRoundOneIfReturnSumOf11IsTrue () {
+
+        // mock for class Dice is getting created
+        Dice dice = mock(Dice.class);
+        // defines that first call is gonna be a 3 and the second and next ones are 4
+        when(dice.roll()).thenReturn(5).thenReturn(6);
+
+        testE = new Craps(dice);
+        // games rules say that a game is won if you have a 7. play needs to return true then
+        assertTrue(testE.play() == true);
+    }
+
+
+
+
 
 }
