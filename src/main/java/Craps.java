@@ -38,11 +38,11 @@ public class Craps {
 
         switch (sum) {
             case 7:
-            case 11:
+            case 11: // case 11 was added because it was missing
                 return true;
 
             case 2:
-            case 3:
+            case 3: // case 3 was added because it was missing
             case 12:
                 return false;
 
@@ -50,7 +50,7 @@ public class Craps {
                 break;
         }
 
-        // 2nd round
+        // other following rounds
         while (true) {
             oldSum = sum;
             sum = dice.roll();
@@ -61,43 +61,8 @@ public class Craps {
             } else if (sum == 7) {
                 return false;
             }
-
-            break;
         }
-
-
-        // 3rd round
-        while (true) {
-            oldSum = sum;
-            sum = dice.roll();
-            sum = sum + dice.roll();
-
-            if (sum == oldSum) {
-                return true;
-            } else if (sum == 7) {
-                return false;
-            }
-
-            break;
-        }
-
-        // 4th round
-        while (true) {
-            oldSum = sum;
-            sum = dice.roll();
-            sum = sum + dice.roll();
-
-            if (sum == oldSum) {
-                return true;
-            } else if (sum == 7) {
-                return false;
-            }
-
-            break;
-        }
-
-
-        return false;
+        // for the while loop to work, you have to remove the break and the return false statements
 
     }
 }

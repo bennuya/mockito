@@ -27,6 +27,9 @@ public class CrapsTest {
         testE = new Craps(dice);
         // game rules say that a game is won if you have a 7. play needs to return true then
         assertTrue(testE.play() == true);
+
+        // verify the rolls
+        verify(dice, times(2)).roll();
     }
 
     // first roll win 11
@@ -41,6 +44,9 @@ public class CrapsTest {
         testE = new Craps(dice);
         // game rules say that a game is won if you have an 11. play needs to return true then
         assertTrue(testE.play() == true);
+
+        // verify the rolls
+        verify(dice, times(2)).roll();
     }
 
     // first roll lose 2
@@ -55,6 +61,9 @@ public class CrapsTest {
         testE = new Craps(dice);
         // game rules say that a game is lost if you have a 2. play needs to return false then
         assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(2)).roll();
     }
 
     // first roll lose 3
@@ -69,6 +78,9 @@ public class CrapsTest {
         testE = new Craps(dice);
         // game rules say that a game is lost if you have a 3. play needs to return false then
         assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(2)).roll();
     }
 
     // first roll lose 12
@@ -83,6 +95,9 @@ public class CrapsTest {
         testE = new Craps(dice);
         // game rules say that a game is lost if you have a 12. play needs to return false then
         assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(2)).roll();
     }
 
     // first roll again
@@ -108,6 +123,9 @@ public class CrapsTest {
 
         testE = new Craps(dice);
         assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(4)).roll();
     }
 
     // first roll win same sum
@@ -122,6 +140,9 @@ public class CrapsTest {
 
         testE = new Craps(dice);
         assertTrue(testE.play() == true);
+
+        // verify the rolls
+        verify(dice, times(4)).roll();
     }
 
     // first roll again
@@ -150,6 +171,9 @@ public class CrapsTest {
 
         testE = new Craps(dice);
         assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(6)).roll();
     }
 
     // first roll win same sum
@@ -165,6 +189,9 @@ public class CrapsTest {
 
         testE = new Craps(dice);
         assertTrue(testE.play() == true);
+
+        // verify the rolls
+        verify(dice, times(6)).roll();
     }
 
     // first roll again
@@ -190,11 +217,14 @@ public class CrapsTest {
         when(dice.roll())
                 .thenReturn(5).thenReturn(5)
                 .thenReturn(4).thenReturn(1)
-                .thenReturn(3).thenReturn(2)
+                .thenReturn(2).thenReturn(2)
                 .thenReturn(3).thenReturn(4);
 
         testE = new Craps(dice);
-        assertTrue(testE.play() == true);
+        assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(8)).roll();
     }
 
     // first roll win same sum
@@ -211,6 +241,9 @@ public class CrapsTest {
 
         testE = new Craps(dice);
         assertTrue(testE.play() == true);
+
+        // verify the rolls
+        verify(dice, times(8)).roll();
     }
 
     // first roll again
@@ -226,4 +259,59 @@ public class CrapsTest {
                 .thenReturn(2).thenReturn(3);
     }
 
+
+    /* FIFTH ROUND */
+    // first roll lose 7
+    @Test
+    public void testRoundFiveIfReturnSumOf7IsFalse() {
+
+        // mock for class Dice is getting created
+        Dice dice = mock(Dice.class);
+        when(dice.roll())
+                .thenReturn(5).thenReturn(5)
+                .thenReturn(6).thenReturn(3)
+                .thenReturn(5).thenReturn(3)
+                .thenReturn(5).thenReturn(4)
+                .thenReturn(3).thenReturn(4);
+
+        testE = new Craps(dice);
+        assertTrue(testE.play() == false);
+
+        // verify the rolls
+        verify(dice, times(10)).roll();
+    }
+
+    // first roll win same sum
+    @Test
+    public void testRoundFiveIfReturnSumAsBeforeIsTrue() {
+
+        // mock for class Dice is getting created
+        Dice dice = mock(Dice.class);
+        when(dice.roll())
+                .thenReturn(5).thenReturn(5)
+                .thenReturn(3).thenReturn(2)
+                .thenReturn(4).thenReturn(2)
+                .thenReturn(2).thenReturn(2)
+                .thenReturn(2).thenReturn(2);
+
+        testE = new Craps(dice);
+        assertTrue(testE.play() == true);
+
+        // verify the rolls
+        verify(dice, times(10)).roll();
+    }
+
+    // first roll again
+    @Test
+    public void testRoundFiveIfReturnDefault() {
+
+        // mock for class Dice is getting created
+        Dice dice = mock(Dice.class);
+        when(dice.roll())
+                .thenReturn(3).thenReturn(1)
+                .thenReturn(5).thenReturn(5)
+                .thenReturn(2).thenReturn(2)
+                .thenReturn(3).thenReturn(1)
+                .thenReturn(2).thenReturn(3);
+    }
 }
